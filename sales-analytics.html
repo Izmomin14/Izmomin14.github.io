@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sales Analytics Dashboard | Momin Izhar Nisar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="project.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="nav">
+    <a class="logo" href="index.html">Momin Izhar Nisar</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#projects">All projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="project-head">
+      <a class="back-link" href="index.html#projects">&larr; All projects</a>
+      <h1>Sales Analytics Dashboard</h1>
+      <p class="project-sub">End-to-end sales analytics on a global, multi-table (star schema) dataset, using Python for data cleaning and an interactive Power BI dashboard to show what drives revenue and profit across products, regions, customers and employees.</p>
+      <div class="btns">
+        <a class="btn primary" href="https://github.com/Izmomin14/sales-analytics-dashboard" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="#" target="_blank" rel="noopener">LinkedIn post</a>
+      </div>
+    </section>
+
+    <section class="stats-section">
+      <div class="stats">
+        <div class="stat"><strong>3</strong><span>dashboard pages</span></div>
+        <div class="stat"><strong>4</strong><span>sales channels analysed</span></div>
+        <div class="stat"><strong>~2x</strong><span>spend of top customers vs typical</span></div>
+        <div class="stat"><strong>Star schema</strong><span>multi-table data model</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Problem statement</h2>
+      <p>A retail and sales organization had its transactional data spread across multiple related tables (customers, products, employees, geography, dates and sales transactions). The raw data had quality issues: duplicate records, missing values, inconsistent formatting, invalid numeric entries and orphaned references. This made it unreliable for direct analysis or reporting.</p>
+      <p>Without a clean, unified view, the business could not easily answer basic questions: where revenue actually comes from, which products and categories are worth prioritizing, whether discounts are eating into profit margins, and which customers and employees drive the most value.</p>
+      <p class="goal"><strong>Goal:</strong> turn raw, fragmented sales data into a single, trustworthy source of truth that shows sales and profit trends, top products and categories, regional and channel differences, and the top employees and customers.</p>
+    </section>
+
+    <section>
+      <h2 class="section-title">About the data</h2>
+      <ul class="data-list">
+        <li>A global, relational dataset in a star schema, covering multiple regions, product categories, sales channels, employees and customers.</li>
+        <li><strong>Tables:</strong> customers, products, employees, geography, dates and sales transactions.</li>
+        <li><strong>Sales channels:</strong> Retail, Online, Partner and Phone.</li>
+        <li><strong>Data issues:</strong> duplicate records, missing values, inconsistent formatting, invalid numeric entries and orphaned references.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Steps</h2>
+      <ol class="steps">
+        <li>Cleaned and validated the raw transactional data in Python (pandas): duplicates, missing values, formatting, invalid numbers and orphaned references.</li>
+        <li>Modeled the cleaned tables into a star schema in Power BI.</li>
+        <li>Wrote DAX calculations for sales, orders, profit and the other measures.</li>
+        <li>Built a 3-page interactive dashboard so leadership, product teams and sales teams can each find what is relevant to them.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2 class="section-title">The dashboard</h2>
+
+      <article class="page-block">
+        <figure class="shot"><img src="https://github.com/Izmomin14/sales-analytics-dashboard/blob/main/Sales%20Dashbaord.png?raw=true" alt="Sales Overview page of the dashboard"></figure>
+        <div>
+          <h3>Page 1: Overview</h3>
+          <p>Headline numbers (total sales, orders and profit) alongside where the revenue comes from: top categories, top countries and the quarter-over-quarter sales trend. The channel breakdown shows how customers actually buy: Retail, Online, Partner and Phone.</p>
+        </div>
+      </article>
+
+      <article class="page-block">
+        <figure class="shot"><img src="https://github.com/Izmomin14/sales-analytics-dashboard/blob/main/Products%20Dasboard.png?raw=true" alt="Product Performance page of the dashboard"></figure>
+        <div>
+          <h3>Page 2: Product Performance</h3>
+          <p>Shows what is actually selling. Revenue leaders and profit leaders sit side by side, because a product that sells a lot is not always the one making the most money. Category comparison and units-sold trends complete the product view.</p>
+        </div>
+      </article>
+
+      <article class="page-block">
+        <figure class="shot"><img src="https://github.com/Izmomin14/sales-analytics-dashboard/blob/main/Employee%20and%20Customer%20png.png?raw=true" alt="Customer and Employee Performance page of the dashboard"></figure>
+        <div>
+          <h3>Page 3: Customer and Employee Performance</h3>
+          <p>Shows who drives the business: employee contribution on the selling side, and customer value and loyalty tiers on the buying side. It helps spot where the business is well diversified or too dependent on a small group.</p>
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <h2 class="section-title">Key findings</h2>
+      <ul class="findings">
+        <li>Clothing is the top-performing category with the highest revenue, followed closely by Accessories and Kitchen.</li>
+        <li>Revenue is spread evenly across countries. No single market dominates, and the top 7 countries fall within a narrow range.</li>
+        <li>Sales channels are almost perfectly balanced, each contributing roughly a quarter of total sales, which shows a well-diversified customer base.</li>
+        <li>Employee performance is mostly consistent, with a few standout performers and no extreme outliers, so dependency risk on any one employee is low.</li>
+        <li>A small segment of customers spends nearly 2x the typical customer, a clear opportunity for targeted retention.</li>
+        <li>Top-performing products span multiple categories, so revenue leadership is not concentrated in one product line.</li>
+        <li>Quarterly sales are volatile, with sharp spikes and dips rather than a steady trend. This points to seasonal demand or inconsistent promotions worth investigating.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Business impact</h2>
+      <ul class="outcome">
+        <li>Smarter inventory and marketing focus, by identifying which products and categories drive profit and not just revenue.</li>
+        <li>Lower concentration risk, since sales are well diversified across channels, countries and employees.</li>
+        <li>A targeted customer retention strategy, by surfacing high-value customers for loyalty programs.</li>
+        <li>Better promotional planning, since the quarterly volatility shows where discounting or seasonal strategy needs a closer review.</li>
+        <li>A reliable, self-serve view of performance that replaces manual reporting.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Technology used</h2>
+      <ul class="tags">
+        <li>Python (pandas)</li>
+        <li>Power BI</li>
+        <li>DAX</li>
+        <li>Star schema</li>
+        <li>Data modeling</li>
+      </ul>
+    </section>
+
+    <section class="my-details">
+      <h2 class="section-title">My details</h2>
+      <p>Momin Izhar Nisar, Mumbai. Aspiring data analyst building a portfolio with Python, SQL and Power BI, with a focus on sales, BFSI and supply chain analytics.</p>
+      <div class="btns">
+        <a class="btn primary" href="mailto:mominizhar45@gmail.com">mominizhar45@gmail.com</a>
+        <a class="btn" href="https://github.com/Izmomin14" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/izhar-momin-b57a23322/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>&copy; 2026 Momin Izhar Nisar</footer>
+</div>
+</body>
+</html>

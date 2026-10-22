@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Credit Card Fraud Analysis| Momin Izhar Nisar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="project.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="nav">
+    <a class="logo" href="index.html">Momin Izhar Nisar</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#projects">All projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="project-head">
+      <a class="back-link" href="index.html#projects">&larr; All projects</a>
+      <h1>Credit Card Fraud Analysis</h1>
+      <p class="project-sub">An interactive Power BI dashboard that analyses credit card transactions (BFSI) to find where and when fraud happens, covering fraud rate, risky categories, peak fraud hours, customer age groups and states (2024 to 2025).</p>
+      <div class="btns">
+        <a class="btn primary" href="https://github.com/Izmomin14/Credit-Card-Fraud-Analysis-Dashboard" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://lnkd.in/p/dUgARsKd" target="_blank" rel="noopener">LinkedIn post</a>
+      </div>
+    </section>
+
+    <section class="stats-section">
+      <div class="stats">
+        <div class="stat"><strong>~12K</strong><span>transactions analysed</span></div>
+        <div class="stat"><strong>17.9%</strong><span>fraud rate in the dataset</span></div>
+        <div class="stat"><strong>₹37.67M</strong><span>fraud loss</span></div>
+        <div class="stat"><strong>60-90%</strong><span>fraud rate from 12 AM to 4 AM</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Problem statement</h2>
+      <p>A bank issues credit cards across India, but has no single view of which transactions are fraudulent and where fraud is concentrated. Fraud patterns by merchant category, transaction amount, time of day, state and customer age group are not analysed, so risky segments cannot be identified.</p>
+      <p>Fraud transactions are much higher in value than genuine ones, so each missed fraud causes a large financial loss. The fraud rate also rises sharply at night, but there is no hour-wise view to support time-based alerts. On top of that, the raw data had duplicates, mixed date and amount formats and missing values, so it was unreliable for decision making.</p>
+      <p class="goal"><strong>Goal:</strong> clean the data and build one Power BI dashboard that shows the fraud team where, when and in which segments fraud is concentrated.</p>
+    </section>
+
+    <section>
+      <h2 class="section-title">About the data</h2>
+      <ul class="data-list">
+        <li>A synthetic dataset created with Python for practice, with intentional errors added. It has 3 related tables.</li>
+        <li><strong>Customers:</strong> name, gender, date of birth, job, location, age and age group.</li>
+        <li><strong>Merchants:</strong> merchant name, category and location.</li>
+        <li><strong>Transactions:</strong> transaction date and time, hour, customer, merchant, amount and the <code>is_fraud</code> label.</li>
+        <li><strong>Raw size:</strong> 1,045 customers, 218 merchants and 12,345 transactions.</li>
+        <li><strong>After cleaning:</strong> about 1,000 customers, 200 merchants and 12K transactions, covering 2024 to 2025.</li>
+        <li>The fraud rate is about 18%. It was increased on purpose for analysis, since real-life fraud is much lower.</li>
+        <li><strong>Data issues:</strong> about 23% of the raw rows had errors, including duplicates, mixed date and amount formats, fake blank values and spelling variants.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Steps</h2>
+      <ol class="steps">
+        <li>Removed duplicate records (such as repeated <code>trans_id</code>) and rows with no customer ID.</li>
+        <li>Fixed text columns: trimmed spaces, fixed casing and corrected spelling variants (for example Bangalore to Bengaluru).</li>
+        <li>Converted fake blank values (<code>?</code>, <code>-</code>, <code>N/A</code>) to proper nulls and filled missing city, state and country from other records.</li>
+        <li>Converted mixed date formats to one format and removed future dates and invalid dates of birth (age outside 18 to 100).</li>
+        <li>Created <code>age</code> and <code>age_group</code> (Young, Adult, Middle, Senior), and split the transaction date-time into date, time and hour.</li>
+        <li>Cleaned the amount column (removed currency symbols and commas, fixed negatives, removed extreme outliers) and filled missing amounts with the median of the fraud or genuine group.</li>
+        <li>Standardized <code>is_fraud</code> values (Yes / No / 1 / 0 / True / False) and handled missing labels.</li>
+        <li>Loaded the cleaned tables into SQL Server, connected them to Power BI and built the dashboard with DAX measures.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2 class="section-title">The dashboard</h2>
+
+      <article class="page-block">
+        <figure class="shot"><img src="https://github.com/Izmomin14/Credit-Card-Fraud-Analysis-Dashboard/blob/main/Fraud%20Overview%20DB%20Snap.png?raw=true" alt="Fraud Overview page of the dashboard"></figure>
+        <div>
+          <h3>Page 1: Fraud Overview</h3>
+          <p>Shows Total Transactions, Fraud Transactions, Fraud Rate % and Fraud Amount, with a year slicer. Charts cover fraud rate by category (top 7), transactions and fraud by month, fraud rate and transactions by hour, and fraud rate by age group.</p>
+        </div>
+      </article>
+
+      <article class="page-block">
+        <figure class="shot"><img src="https://github.com/Izmomin14/Credit-Card-Fraud-Analysis-Dashboard/blob/main/Customer%20%26%20Location%20Risk%20%20DB%20Snap.png?raw=true" alt="Customer and Location Risk page of the dashboard"></figure>
+        <div>
+          <h3>Page 2: Customer and Location Risk</h3>
+          <p>Shows Avg Fraud Amount, Avg Normal Amount, Fraud Share % and Fraud Victims, with a category slicer. Charts cover fraud rate by state, the top 10 customers by fraud amount and the top 10 merchants by fraud count.</p>
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <h2 class="section-title">Key findings</h2>
+      <ul class="findings">
+        <li>About 12K transactions were analysed, with around 2,000 fraud cases (a 17.9% fraud rate) and a fraud loss of ₹37.67M.</li>
+        <li>Online categories have the highest fraud rate: Misc Net (~52%) and Shopping Net (~38%), followed by Travel (~31%).</li>
+        <li>Fraud is very high at night: 60% to 90% of transactions between 12 AM and 4 AM are fraud. It falls below 10% after 6 AM and starts rising again after 9 PM.</li>
+        <li>Fraud transactions are much bigger in value, with a median of about ₹10.7K against about ₹1K for genuine ones.</li>
+        <li>Monthly fraud stays fairly steady through the year, with small peaks in March, May and December.</li>
+        <li>Senior customers show the highest fraud rate among the age groups.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Suggestions</h2>
+      <ul class="outcome">
+        <li>Add extra checks (OTP, lower limits, instant alerts) for night-time transactions.</li>
+        <li>Use extra verification on online categories like Misc Net, Shopping Net and Travel.</li>
+        <li>Review high-value transactions (above about ₹5K), mainly at night.</li>
+        <li>Send instant SMS alerts and awareness messages to senior customers.</li>
+        <li>Closely watch customers and merchants with repeated fraud.</li>
+        <li>Use hour, category and amount together as a risk score instead of single rules, so fewer genuine transactions are blocked.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Technology used</h2>
+      <ul class="tags">
+        <li>Python (Pandas)</li>
+        <li>NumPy</li>
+        <li>SQL Server</li>
+        <li>Power BI</li>
+        <li>DAX</li>
+        <li>Data modeling</li>
+      </ul>
+    </section>
+
+    <section class="my-details">
+      <h2 class="section-title">My details</h2>
+      <p>Momin Izhar Nisar, Mumbai. Aspiring data analyst building a portfolio with Python, SQL and Power BI, with a focus on BFSI and customer analytics.</p>
+      <div class="btns">
+        <a class="btn primary" href="mailto:mominizhar45@gmail.com">mominizhar45@gmail.com</a>
+        <a class="btn" href="https://github.com/Izmomin14" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/izhar-momin-b57a23322/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>&copy; 2026 Momin Izhar Nisar</footer>
+</div>
+</body>
+</html>

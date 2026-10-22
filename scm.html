@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supply Chain Management (SCM) Analytics | Momin Izhar Nisar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="project.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="nav">
+    <a class="logo" href="index.html">Momin Izhar Nisar</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#projects">All projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="project-head">
+      <a class="back-link" href="index.html#projects">&larr; All projects</a>
+      <h1>Supply Chain Management (SCM) Analytics</h1>
+      <p class="project-sub">End-to-end analytics on a 6-table relational e-commerce supply chain dataset, using Python for data cleaning and SQL to uncover delivery, supplier, inventory and profitability issues.</p>
+      <div class="btns">
+  <a class="btn primary" href="https://github.com/Izmomin14/scm-supply-chain-analytics" target="_blank" rel="noopener">GitHub</a>
+  <a class="btn" href="https://github.com/Izmomin14/scm-supply-chain-analytics" target="_blank" rel="noopener">LinkedIn post</a>
+</div>
+    </section>
+
+    <section class="stats-section">
+      <div class="stats">
+        <div class="stat"><strong>6</strong><span>linked relational tables</span></div>
+        <div class="stat"><strong>25</strong><span>SQL queries written</span></div>
+        <div class="stat"><strong>53.8%</strong><span>orders delivered late</span></div>
+        <div class="stat"><strong>18.49%</strong><span>orders are loss-making</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Problem statement</h2>
+      <p>The business has no clear view of how many orders are delivered late, or which shipping mode and region contribute most to the delays. Supplier reliability is not tracked, so it is unclear which suppliers are low-rated or slow.</p>
+      <p>Inventory management is weak: several products are already below their reorder level or have not been restocked in over 60 days. Category and product profitability is unclear, and a notable share of orders are loss-making with no known pattern. High-value and repeat customers have not been identified, the impact of discounts on profit has not been validated, and there is no visibility into warehouse-wise stock or sales and profit trends over time.</p>
+      <p class="goal"><strong>Goal:</strong> clean the data, model it as relational tables, and use SQL to identify delivery bottlenecks, supplier risk, inventory gaps and profitability drivers across the supply chain.</p>
+    </section>
+
+    <section>
+      <h2 class="section-title">About the data</h2>
+      <ul class="data-list">
+        <li>6 relational tables built from a base e-commerce supply chain dataset and linked through shared keys.</li>
+        <li><strong>suppliers:</strong> supplier details, country, lead time and rating.</li>
+        <li><strong>inventory:</strong> stock quantity, reorder level, warehouse location and last restocked date, linked to products and suppliers.</li>
+        <li><strong>products:</strong> product name, category, price and supplier.</li>
+        <li><strong>customers:</strong> customer demographics and location.</li>
+        <li><strong>orders:</strong> order status, delivery status, shipping mode and shipping dates.</li>
+        <li><strong>order_items:</strong> order-level quantity, pricing, discount, profit and sales.</li>
+        <li><strong>Data issues:</strong> the data was intentionally kept slightly dirty (nulls, duplicates, inconsistent casing and mixed date formats) to reflect real-world messiness and to practise cleaning.</li>
+        <li>Relationships are realistic: each supplier is tied to specific product categories, mirroring how real procurement works.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Steps</h2>
+      <ol class="steps">
+        <li>Cleaned and standardized the raw data in Python (Pandas): nulls, duplicates, casing and date formats.</li>
+        <li>Built the 6 relational tables and validated the relationships between them.</li>
+        <li>Wrote 25 SQL queries, from basic filtering and aggregation to joins, subqueries and window functions.</li>
+        <li>Turned the query results into business insights on delivery, supplier, inventory and profit performance.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2 class="section-title">SQL analysis</h2>
+      <p>The 25 business questions answered with SQL, grouped by topic.</p>
+
+      <h3 class="sub-h">Delivery and shipping</h3>
+      <ol class="steps">
+        <li value="2">Find all orders with the status "Late delivery".</li>
+        <li value="5">Count the total number of orders per shipping mode.</li>
+        <li value="8">Find the average delivery delay per region.</li>
+      </ol>
+
+      <h3 class="sub-h">Suppliers</h3>
+      <ol class="steps">
+        <li value="3">Show all suppliers with a rating below 3.</li>
+        <li value="11">Find the average lead time per supplier, sorted in ascending order.</li>
+        <li value="16">List suppliers whose products have a combined stock quantity above a threshold (for example 5,000).</li>
+        <li value="19">Rank suppliers by lead time within each country.</li>
+        <li value="24">Find suppliers whose average lead time is above the overall average lead time.</li>
+      </ol>
+
+      <h3 class="sub-h">Inventory and warehouses</h3>
+      <ol class="steps">
+        <li value="4">Find products that are currently below their reorder level.</li>
+        <li value="10">Find the total stock quantity held in each warehouse.</li>
+        <li value="12">Find products that have not been restocked in the last 60 days.</li>
+        <li value="23">Find products whose stock quantity is below the average stock quantity of their category.</li>
+        <li value="25">Find the top 3 highest-selling products in each warehouse.</li>
+      </ol>
+
+      <h3 class="sub-h">Products, sales and profit</h3>
+      <ol class="steps">
+        <li value="1">List all products with their price, sorted by price in descending order.</li>
+        <li value="6">Find the total sales and profit for each product category.</li>
+        <li value="9">List the loss-making orders (orders with negative profit per order).</li>
+        <li value="13">Find the total quantity sold per product, joined with the product name.</li>
+        <li value="15">Find which discount rate range gives the highest average profit ratio.</li>
+        <li value="17">Find the most frequently ordered product in each category.</li>
+        <li value="18">Compare the average unit price with the average discount given, per category.</li>
+        <li value="20">Rank each product by its total profit within its category.</li>
+      </ol>
+
+      <h3 class="sub-h">Customers</h3>
+      <ol class="steps">
+        <li value="7">Find the top 10 customers by total order value.</li>
+        <li value="14">Find the customers who placed more than 5 orders.</li>
+      </ol>
+
+      <h3 class="sub-h">Trends over time</h3>
+      <ol class="steps">
+        <li value="21">Calculate the running total (cumulative) of sales, ordered by order date.</li>
+        <li value="22">Calculate the month-over-month change in total profit.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2 class="section-title">Key findings</h2>
+      <ul class="findings">
+        <li>53.8% of orders are delivered late, which is a major operational red flag.</li>
+        <li>Two suppliers, EliteGear Manufacturing and Horizon Retail Supply, have ratings below 3, so depending on them is risky.</li>
+        <li>14 products are currently below their reorder level, which means an immediate stockout risk.</li>
+        <li>11 products have not been restocked in 60+ days, a sign of inventory neglect.</li>
+        <li>Fishing is the top revenue and profit-generating category, followed by Cleats and Camping &amp; Hiking.</li>
+        <li>18.49% of orders are loss-making: nearly 1 in 5 orders ends in a loss.</li>
+        <li>The fastest supplier is Bright Path Trading, with an average lead time of 4 days, a strong benchmark for the others.</li>
+        <li>Only 2 customers placed more than 5 orders, so repeat-purchase behaviour is very low.</li>
+        <li>The discount rate shows almost no correlation with the profit ratio, so discounting is not improving profit margins.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Suggestions</h2>
+      <ul class="outcome">
+        <li>Investigate the root causes of the high late-delivery rate by shipping mode and region.</li>
+        <li>Review or replace low-rated, unreliable suppliers.</li>
+        <li>Set up automated reorder alerts for products near or below their reorder level.</li>
+        <li>Prioritize restocking for products inactive for 60+ days to avoid lost sales.</li>
+        <li>Double down on the high-performing categories (Fishing, Cleats, Camping &amp; Hiking) in marketing and inventory planning.</li>
+        <li>Audit loss-making orders to find the pricing or discount issues behind the negative margins.</li>
+        <li>Reassess the discount strategy, since it is not translating into higher profit.</li>
+        <li>Build a customer loyalty and repeat-purchase program to improve retention.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Technology used</h2>
+      <ul class="tags">
+        <li>Python (Pandas)</li>
+        <li>SQL</li>
+        <li>Joins and subqueries</li>
+        <li>Window functions</li>
+        <li>Data cleaning</li>
+        <li>Relational data modeling</li>
+      </ul>
+    </section>
+
+    <section class="my-details">
+      <h2 class="section-title">My details</h2>
+      <p>Momin Izhar Nisar, Mumbai. Aspiring data analyst building a portfolio with Python, SQL and Power BI, with a focus on supply chain and BFSI use cases.</p>
+      <div class="btns">
+        <a class="btn primary" href="mailto:mominizhar45@gmail.com">mominizhar45@gmail.com</a>
+        <a class="btn" href="https://github.com/Izmomin14" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/izhar-momin-b57a23322/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>&copy; 2026 Momin Izhar Nisar</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BFSI Customer Churn and Risk Analytics | Momin Izhar Nisar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="project.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="nav">
+    <a class="logo" href="index.html">Momin Izhar Nisar</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#projects">All projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="project-head">
+      <a class="back-link" href="index.html#projects">&larr; All projects</a>
+      <h1>BFSI Customer Churn and Risk Analytics</h1>
+      <p class="project-sub">End-to-end analytics on a banking customer dataset: data cleaning, EDA and an interactive Power BI dashboard to find high-risk customers and the key drivers of churn.</p>
+      <div class="btns">
+        <a class="btn primary" href="https://github.com/Izmomin14/bfsi-customer-churn-analytics" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://lnkd.in/p/dGhXsN7J" target="_blank" rel="noopener">LinkedIn post</a>
+      </div>
+    </section>
+
+    <section class="stats-section">
+      <div class="stats">
+        <div class="stat"><strong>~80,000</strong><span>customer records</span></div>
+        <div class="stat"><strong>3</strong><span>dashboard pages</span></div>
+        <div class="stat"><strong>68% vs 0.5%</strong><span>churn: high-risk vs low-risk</span></div>
+        <div class="stat"><strong>34K</strong><span>"Loyal but At-Risk" customers</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Problem statement</h2>
+      <p>The bank is losing a significant number of customers, which hurts revenue and customer lifetime value. Management had no clear view of which customer segments, age groups, regions or risk categories were most likely to churn.</p>
+      <p>Metrics like risk score, engagement score and cluster group already existed in the data, but their relationship with churn had never been validated, and segmentation was not being used to drive retention strategy.</p>
+      <p class="goal"><strong>Goal:</strong> clean the data, perform EDA, and build an interactive Power BI dashboard that identifies high-risk customers, highlights key churn drivers, and shows segmentation with actionable retention insights.</p>
+    </section>
+
+    <section>
+      <h2 class="section-title">About the data</h2>
+      <ul class="data-list">
+        <li>About 80,000 customer records from a BFSI (banking) dataset.</li>
+        <li><strong>Demographics:</strong> age, gender, occupation, region.</li>
+        <li><strong>Account details:</strong> balance, income, tenure, number of cards and services.</li>
+        <li><strong>Behaviour:</strong> engagement score, digital usage, activity dates.</li>
+        <li><strong>Risk and segment fields:</strong> risk score, customer segment, loyalty level, cluster group.</li>
+        <li><strong>Target field:</strong> <code>exit</code>, whether the customer has churned (Yes/No).</li>
+        <li><strong>Data issues:</strong> inconsistent column names, non-English text fields, missing values, and outliers in age and risk score.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Steps</h2>
+      <ol class="steps">
+        <li>Cleaned and standardized the raw data in Python (pandas): column names, text fields, missing values and outliers.</li>
+        <li>Engineered new features: age groups, risk categories and cluster labels.</li>
+        <li>Ran exploratory data analysis to understand churn patterns.</li>
+        <li>Modeled the data and wrote DAX measures in Power BI.</li>
+        <li>Built a 3-page interactive dashboard for churn and risk monitoring.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2 class="section-title">The dashboard</h2>
+
+      <article class="page-block">
+        <figure class="shot"><img src="https://github.com/Izmomin14/bfsi-customer-churn-analytics/blob/main/Chrun%20Overview.png?raw=true" alt="Churn Summary page of the dashboard"></figure>
+        <div>
+          <h3>Page 1: Churn Summary</h3>
+          <p>A quick health check with Total Customers, Churn Rate, Average Balance and Average Engagement Score. It breaks churn down by customer segment, age group and loyalty level, and adds a quarterly churn trend.</p>
+        </div>
+      </article>
+
+      <article class="page-block">
+        <figure class="shot"><img src="https://github.com/Izmomin14/bfsi-customer-churn-analytics/blob/main/Chrun%20and%20Risk%20Overview.png?raw=true" alt="Churn and Risk Drivers page of the dashboard"></figure>
+        <div>
+          <h3>Page 2: Churn and Risk Drivers</h3>
+          <p>A diagnostic view of why customers churn. It shows the High-Risk Customer count, the average tenure of churned customers and the share of digital users among them, with churn split by risk category, tenure, engagement score and loyalty level.</p>
+        </div>
+      </article>
+
+      <article class="page-block">
+        <figure class="shot"><img src="https://github.com/Izmomin14/bfsi-customer-churn-analytics/blob/main/Segmentation%20&%20Cluster.png?raw=true" alt="Segmentation and Cluster Insights page of the dashboard"></figure>
+        <div>
+          <h3>Page 3: Segmentation and Cluster Insights</h3>
+          <p>A segmentation view for retention strategy. It shows Gold loyalty %, the Loyal-but-At-Risk customer count and the Retention Rate, with churn split by origin province, cluster group and occupation.</p>
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <h2 class="section-title">Key findings</h2>
+      <ul class="findings">
+        <li>The Mass segment churns the most (~40%), while Priority and Affluent segments churn the least.</li>
+        <li>Young customers churn the most (22%), and Seniors the least.</li>
+        <li>Churn varies by region, from about 17% to 20% across provinces.</li>
+        <li>High-risk customers churn at 68%, compared with 0.5% for low-risk customers. This confirms the risk score is a strong churn predictor.</li>
+        <li>Low engagement scores strongly go with higher churn.</li>
+        <li>34K customers are in the "Loyal but At-Risk" cluster: long tenure but low engagement, so they could churn silently.</li>
+        <li>Only about 7.7% of churned customers were digital (mobile) users. Churn is concentrated among offline customers.</li>
+        <li>Bronze-tier loyalty customers account for 75.7% of all churn.</li>
+        <li>Homemakers/Students and General Labor churn the most, and Business Owners/Managers the least.</li>
+        <li>The quarterly churn trend (2021 to 2025) fluctuates, with a notable recent dip.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Suggestions</h2>
+      <ul class="outcome">
+        <li>Prioritize retention campaigns for the Mass segment, the largest source of churn.</li>
+        <li>Design engagement programs for Young customers.</li>
+        <li>Re-engage the 34K "Loyal but At-Risk" customers before they leave.</li>
+        <li>Encourage digital and mobile adoption, since offline customers churn far more.</li>
+        <li>Improve Bronze-tier loyalty benefits to reduce churn in that group.</li>
+        <li>Set up an early-warning system based on engagement score thresholds.</li>
+        <li>Offer occupation-specific retention products for high-churn occupations.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Technology used</h2>
+      <ul class="tags">
+        <li>Python (pandas)</li>
+        <li>Power BI</li>
+        <li>DAX</li>
+        <li>Data modeling</li>
+        <li>EDA</li>
+      </ul>
+    </section>
+
+    <section class="my-details">
+      <h2 class="section-title">My details</h2>
+      <p>Momin Izhar Nisar, Mumbai. Aspiring data analyst building a portfolio with Python, SQL and Power BI, focused on BFSI and customer analytics.</p>
+      <div class="btns">
+        <a class="btn primary" href="mailto:mominizhar45@gmail.com">mominizhar45@gmail.com</a>
+        <a class="btn" href="https://github.com/Izmomin14" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/izhar-momin-b57a23322/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>&copy; 2026 Momin Izhar Nisar</footer>
+</div>
+</body>
+</html>

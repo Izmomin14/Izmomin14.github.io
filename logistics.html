@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logistics Delivery Performance and Order Failure Analysis | Momin Izhar Nisar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="project.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="nav">
+    <a class="logo" href="index.html">Momin Izhar Nisar</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#projects">All projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="project-head">
+      <a class="back-link" href="index.html#projects">&larr; All projects</a>
+      <h1>Logistics Delivery Performance and Order Failure Analysis</h1>
+      <p class="project-sub">An interactive Power BI dashboard that tracks delivery performance across courier partners and the impact of cancellations, RTOs and returns on profitability (2023 to 2025).</p>
+      <div class="btns">
+        <a class="btn primary" href="https://github.com/Izmomin14/logistics-delivery-performance-analysis" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://lnkd.in/p/dP3guVEP" target="_blank" rel="noopener">LinkedIn post</a>
+      </div>
+    </section>
+
+    <section class="stats-section">
+      <div class="stats">
+        <div class="stat"><strong>~5,000</strong><span>orders analysed</span></div>
+        <div class="stat"><strong>73.4%</strong><span>overall on-time delivery</span></div>
+        <div class="stat"><strong>7.82%</strong><span>cancelled + RTO orders</span></div>
+        <div class="stat"><strong>₹9.26M</strong><span>net margin</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Problem statement</h2>
+      <p>An e-commerce business ships thousands of orders through multiple courier partners, but has no single view of which shippers deliver on time and which cause delays. Late deliveries, customer ratings and shipping cost are not analysed together, so it is unclear whether higher shipping cost gives better service.</p>
+      <p>Cancellations, RTOs and returns cause revenue loss and wasted shipping cost, but their main reasons and most affected product categories are unknown. Net margin is also not tracked by category, so low-margin categories cannot be identified.</p>
+      <p class="goal"><strong>Goal:</strong> clean the data and build one Power BI dashboard that helps management choose shippers, cut order failures and improve margin.</p>
+    </section>
+
+    <section>
+      <h2 class="section-title">About the data</h2>
+      <ul class="data-list">
+        <li>5 related tables plus a Date table, covering 36 months (2023 to 2025).</li>
+        <li><strong>Customers:</strong> customer ID, name, city, state (250 records).</li>
+        <li><strong>Products and Suppliers:</strong> product name, category, unit price and supplier (100 products).</li>
+        <li><strong>Logistics:</strong> order and expected delivery dates, delivery date, shipper, quantity, shipping cost, order status and customer rating (~5,000 orders, 8 shippers).</li>
+        <li><strong>Returns:</strong> the return reason for each returned order (~300 returns).</li>
+        <li><strong>Data issues:</strong> duplicate and blank records, inconsistent column names and data types, inconsistent shipper names and casing, and missing values.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Steps</h2>
+      <ol class="steps">
+        <li>Loaded all tables into Pandas and removed duplicate and blank records.</li>
+        <li>Standardized column names, data types (dates, currency, text) and shipper names.</li>
+        <li>Handled missing values with Pandas and NumPy, keeping Delivery_Date blank for undelivered orders so they are not counted as on time.</li>
+        <li>Built the data model in Power BI and wrote DAX measures for On-Time Delivery %, Late Delivery %, Return Rate %, Cancelled + RTO % and Net Margin.</li>
+        <li>Planned the dashboard first by mapping each problem statement point to a KPI or chart, then built a 2-page dashboard.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2 class="section-title">The dashboard</h2>
+
+      <article class="page-block">
+        <figure class="shot"><img src="https://github.com/Izmomin14/logistics-delivery-performance-analysis/blob/main/Delivery%20%26%20Shipper%20Performance.png?raw=true" alt="Delivery and Shipper Performance page of the dashboard"></figure>
+        <div>
+          <h3>Page 1: Delivery and Shipper Performance</h3>
+          <p>Shows Total Orders, On-Time Delivery %, Late Delivery % and Avg Rating, with a year slicer. Charts cover on-time delivery % by shipper, monthly orders with late delivery % trend, and average shipping cost by shipper.</p>
+        </div>
+      </article>
+
+      <article class="page-block">
+        <figure class="shot"><img src="https://github.com/Izmomin14/logistics-delivery-performance-analysis/blob/main/Order%20Failures,%20Returns%20%26%20Profit%20Analysis.png?raw=true" alt="Order Failures, Returns and Profit Analysis page of the dashboard"></figure>
+        <div>
+          <h3>Page 2: Order Failures, Returns and Profit Analysis</h3>
+          <p>Shows Net Margin, Return Rate and Cancelled + RTO %, with a shipper filter. Charts cover orders by status, category-wise net margin, category-wise return count and a return reasons breakdown.</p>
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <h2 class="section-title">Key findings</h2>
+      <ul class="findings">
+        <li>About 5K orders were delivered, with an overall on-time delivery rate of 73.4% and an average customer rating of 3.8.</li>
+        <li>Blue Dart and Gati have the highest on-time delivery (~81%), but also the highest average shipping cost (~₹235 to ₹245).</li>
+        <li>Speed Post is the cheapest (~₹107) but has the lowest on-time delivery (~56%).</li>
+        <li>Delhivery, DTDC and Shadowfax sit in the middle, balancing cost and punctuality.</li>
+        <li>Late delivery % moves up and down month to month, with visible spikes in some months, so it needs regular tracking.</li>
+        <li>Net Margin is ₹9.26M, Return Rate is 6.00% and Cancelled + RTO is 7.82%.</li>
+        <li>92.18% of orders are delivered, 4.28% are cancelled and the rest are RTO.</li>
+        <li>Home &amp; Kitchen and Fashion earn the highest net margin (~₹2.8M to ₹2.9M each), followed by Electronics (~₹2.0M).</li>
+        <li>Sports &amp; Fitness and Grocery have the lowest net margin (~₹0.2M each).</li>
+        <li>Damaged, Size / fit issue and Not as described are the top return reasons.</li>
+        <li>Beauty &amp; Personal Care has the highest return count among categories.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Suggestions</h2>
+      <ul class="outcome">
+        <li>Use Blue Dart and Gati (highest on-time, highest cost) only for high-value or urgent orders.</li>
+        <li>Reduce Speed Post (cheapest, lowest on-time %) or add SLA penalties for late delivery.</li>
+        <li>Shift volume to mid-cost shippers like Delhivery and DTDC for a better cost vs punctuality balance.</li>
+        <li>Cut returns with better packaging, size charts and accurate product details.</li>
+        <li>Run quality checks and supplier reviews first in the categories with the most returns.</li>
+        <li>Reduce cancellations and RTOs with address verification and order confirmation before dispatch, especially for COD.</li>
+        <li>Review pricing and shipping cost for Sports &amp; Fitness and Grocery (lowest margin), and promote high-margin categories.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Technology used</h2>
+      <ul class="tags">
+        <li>Python (Pandas)</li>
+        <li>NumPy</li>
+        <li>Power BI</li>
+        <li>DAX</li>
+        <li>Data modeling</li>
+      </ul>
+    </section>
+
+    <section class="my-details">
+      <h2 class="section-title">My details</h2>
+      <p>Momin Izhar Nisar, Mumbai. Aspiring data analyst building a portfolio with Python, SQL and Power BI.</p>
+      <div class="btns">
+        <a class="btn primary" href="mailto:mominizhar45@gmail.com">mominizhar45@gmail.com</a>
+        <a class="btn" href="https://github.com/Izmomin14" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/izhar-momin-b57a23322/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>&copy; 2026 Momin Izhar Nisar</footer>
+</div>
+</body>
+</html>
